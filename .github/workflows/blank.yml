@@ -13,5 +13,6 @@ jobs:
       run: echo Hello, Ajay!
     - uses: Ajay-MS/hello-world-action@master
       with:
-        who-to-greet: 'Ajay Yadav'
+        action-type: 'GET-FEATURE-FLAGS'
+        project-id: '11e16aac-0888-48a9-8894-26a717ff2b81'
       id: hello
