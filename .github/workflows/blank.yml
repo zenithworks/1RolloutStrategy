@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Run a one-line script
-      run: echo Hello, Ajay1!
+      run: echo Hello, Ajay2!
     - uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'GET-FEATURE-FLAGS'
