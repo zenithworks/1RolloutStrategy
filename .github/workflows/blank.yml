@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, Ajay!
-    - uses: Ajay-MS/hello-world-action
+    - uses: Ajay-MS/hello-world-action@master
       with:
         who-to-greet: 'Ajay Yadav'
       id: hello
