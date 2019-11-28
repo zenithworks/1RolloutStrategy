@@ -13,6 +13,7 @@ jobs:
       run: echo Hello, Ajay2!
     - uses: Ajay-MS/hello-world-action@master
       with:
-        action-type: 'GET-FEATURE-FLAGS'
-        project-id: '11e16aac-0888-48a9-8894-26a717ff2b81'
+        action-type: 'SET'
+        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        feature-flag-name: 'Microsoft.FeatureFlagDemo.Mobile.Green'
       id: hello
