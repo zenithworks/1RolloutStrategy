@@ -33,11 +33,11 @@ jobs:
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
     - name: Perform Health Checks
       run: |
-        echo Reaching out to health enpoints...
+        echo Reaching out to health end points...
         sleep 1
         echo Running health checks...
         sleep 4
-        echo Health checks complete
+        echo Health checks complete - SUCCESS
     - name: 'Rollout to segment RowB users'
       uses: zenithworks/rollout@master
       with:
@@ -46,9 +46,12 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '180s' 
+      run: |
+        echo Reaching out to health end points...
+        sleep 1
+        echo Running health checks...
+        sleep 4
+        echo Health checks complete - SUCCESS
     - name: 'Rollout to 50% of users'
       uses: zenithworks/rollout@master
       with:
@@ -57,9 +60,12 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '180s' 
+      run: |
+        echo Reaching out to health end points...
+        sleep 1
+        echo Running health checks...
+        sleep 4
+        echo Health checks complete - SUCCESS
     - name: 'Rollout to 100% of users'
       uses: zenithworks/rollout@master
       with:
