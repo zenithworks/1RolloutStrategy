@@ -17,13 +17,18 @@ jobs:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
-        feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"
+        feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"       
+    
     - name: 'Turn-on the feature flag'
       uses: zenithworks/rollout@master
       with:
         action-type: 'TURN_ON'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
-        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
+        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'        
+    - name: Perform Health Checks
+      uses: jakejarvis/wait-action
+      with:
+        time: '180s'     
     - name: 'Rollout to 10% of users'
       uses: zenithworks/rollout@master
       with:
@@ -31,6 +36,10 @@ jobs:
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
+    - name: Perform Health Checks
+      uses: jakejarvis/wait-action
+      with:
+        time: '180s'     
     - name: 'Rollout to segment, Row B users'
       uses: zenithworks/rollout@master
       with:
@@ -38,6 +47,10 @@ jobs:
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
+    - name: Perform Health Checks
+      uses: jakejarvis/wait-action
+      with:
+        time: '180s' 
     - name: 'Rollout to 50% of users'
       uses: zenithworks/rollout@master
       with:
@@ -45,6 +58,10 @@ jobs:
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
+    - name: Perform Health Checks
+      uses: jakejarvis/wait-action
+      with:
+        time: '180s' 
     - name: 'Rollout to 100% of users'
       uses: zenithworks/rollout@master
       with:
