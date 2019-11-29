@@ -12,7 +12,7 @@ jobs:
     - name: Run a one-line script
       run: echo Feature flag rollout demo!
     - name: 'Whitelisting Row A users'
-      uses: Ajay-MS/hello-world-action@master
+      uses: zenithworks/rollout@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
