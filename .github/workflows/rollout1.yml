@@ -8,9 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Feature flag rollout demo!
+    - uses: actions/checkout@v1    
     - name: 'Whitelisting Row A users'
       uses: zenithworks/rollout@master
       with:
@@ -26,7 +24,7 @@ jobs:
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'        
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action
+      uses: jakejarvis/wait-action@master
       with:
         time: '180s'     
     - name: 'Rollout to 10% of users'
@@ -37,10 +35,10 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action
+      uses: jakejarvis/wait-action@master
       with:
         time: '180s'     
-    - name: 'Rollout to segment, Row B users'
+    - name: 'Rollout to segment RowB users'
       uses: zenithworks/rollout@master
       with:
         action-type: 'SET_CONDITION'
@@ -48,7 +46,7 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action
+      uses: jakejarvis/wait-action@master
       with:
         time: '180s' 
     - name: 'Rollout to 50% of users'
@@ -59,7 +57,7 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action
+      uses: jakejarvis/wait-action@master
       with:
         time: '180s' 
     - name: 'Rollout to 100% of users'
