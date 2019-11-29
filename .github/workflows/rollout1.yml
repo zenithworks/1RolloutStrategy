@@ -22,11 +22,8 @@ jobs:
       with:
         action-type: 'TURN_ON'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
-        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'        
-    - name: Perform Health Checks
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '180s'     
+        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'       
+
     - name: 'Rollout to 10% of users'
       uses: zenithworks/rollout@master
       with:
@@ -35,9 +32,12 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
     - name: Perform Health Checks
-      uses: jakejarvis/wait-action@master
-      with:
-        time: '180s'     
+      run: |
+        echo Reaching out to health enpoints...
+        sleep 1
+        echo Running health checks...
+        sleep 4
+        echo Health checks complete
     - name: 'Rollout to segment RowB users'
       uses: zenithworks/rollout@master
       with:
