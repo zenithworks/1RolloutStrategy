@@ -15,6 +15,6 @@ jobs:
       with:
         action-type: 'SET'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
-        feature-flag-name: 'Microsoft.FeatureFlagDemo.Mobile.Green'
+        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'user'\n  op: '='\n  value: 'A5'"
       id: hello
