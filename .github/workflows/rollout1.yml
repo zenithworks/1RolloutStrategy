@@ -11,42 +11,49 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Feature flag rollout demo!
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Whitelisting Row A users'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Turn-on the feature flag'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'TURN_ON'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Rollout to 10% of users'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Rollout to segment, Row B users'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Rollout to 30% of users'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '30' \n- target: 'row'\n  op: '='\n  value: 'B'"
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Rollout to 60% of users'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '60' \n- target: 'row'\n  op: '='\n  value: 'B'"
-    - uses: Ajay-MS/hello-world-action@master
+    - name: 'Rollout to 100% of users'
+      uses: Ajay-MS/hello-world-action@master
       with:
         action-type: 'SET_CONDITION'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
