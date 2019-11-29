@@ -1,4 +1,4 @@
-name: Rollout 1
+name: Percentage based rollout
 
 on: [push]
 
