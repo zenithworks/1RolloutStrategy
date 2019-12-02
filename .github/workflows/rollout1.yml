@@ -19,7 +19,7 @@ jobs:
     - name: 'TURN ON THE FEATURE FLAG'
       uses: zenithworks/rollout@master
       with:
-        action-type: 'TURN_ON'
+        action-type: 'turn_on'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'       
     
