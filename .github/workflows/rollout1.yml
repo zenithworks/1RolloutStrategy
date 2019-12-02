@@ -4,72 +4,77 @@ on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-    
+    runs-on: ubuntu-latest    
     steps:
     - uses: actions/checkout@v1    
-    - name: 'Whitelisting Row A users'
+      
+    - name: 'WHITELIST QA USERS'
       uses: zenithworks/rollout@master
       with:
-        action-type: 'SET_CONDITION'
+        action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"       
     
-    - name: 'Turn-on the feature flag'
+    - name: 'TURN ON THE FEATURE FLAG'
       uses: zenithworks/rollout@master
       with:
         action-type: 'TURN_ON'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'       
-
-    - name: 'Rollout to 10% of users'
+    
+    - name: Wait for QA validation
+      run: |
+        echo Waiting for QA validation...        
+        sleep 4
+        echo Validation Successful... proceeding with roll out...
+        
+    - name: 'ROLL OUT TO 10% USERS'
       uses: zenithworks/rollout@master
       with:
-        action-type: 'SET_CONDITION'
+        action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
-    - name: Perform Health Checks
+
+    - name: 'PERFORM HEALTH CHECKS'
       run: |
-        echo Reaching out to health end points...
-        sleep 1
-        echo Running health checks...
+        echo Reaching out to health end points...        
         sleep 4
         echo Health checks complete - SUCCESS
-    - name: 'Rollout to segment RowB users'
+        
+    - name: 'ROLL OUT TO SEGMENT  B USERS'
       uses: zenithworks/rollout@master
       with:
-        action-type: 'SET_CONDITION'
+        action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
-    - name: Perform Health Checks
+    
+    - name: 'PERFORM HEALTH CHECKS'
       run: |
-        echo Reaching out to health end points...
-        sleep 1
-        echo Running health checks...
+        echo Reaching out to health end points...        
         sleep 4
         echo Health checks complete - SUCCESS
-    - name: 'Rollout to 50% of users'
+    
+    - name: 'ROLLOUT TO 50% OF USERS'
       uses: zenithworks/rollout@master
       with:
-        action-type: 'SET_CONDITION'
+        action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
-    - name: Perform Health Checks
+    
+    - name: 'PERFORM HEALTH CHECKS'
       run: |
-        echo Reaching out to health end points...
-        sleep 1
-        echo Running health checks...
+        echo Reaching out to health end points...        
         sleep 4
         echo Health checks complete - SUCCESS
-    - name: 'Rollout to 100% of users'
+    
+    - name: 'ROLLOUT TO 100% USERS'
       uses: zenithworks/rollout@master
       with:
-        action-type: 'SET_CONDITION'
+        action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '100' \n- target: 'row'\n  op: '='\n  value: 'B'"
