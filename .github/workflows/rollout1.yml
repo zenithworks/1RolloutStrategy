@@ -25,8 +25,7 @@ jobs:
     
 
     - name: WAIT FOR QA FEEDBACK
-      run: |
-        echo Waiting for QA feedback...        
+      run: |               
         sleep 15
         echo Proceeding with roll out...   
         
@@ -39,8 +38,7 @@ jobs:
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
 
     - name: 'WAIT FOR HEALTH CHECKS'
-      run: |
-        echo Waiting for health checks...        
+      run: |                
         sleep 15
         echo Proceeding with roll out...   
         
@@ -53,8 +51,7 @@ jobs:
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
     
     - name: 'WAIT FOR HEALTH CHECKS'
-      run: |
-        echo Waiting for health checks...        
+      run: |               
         sleep 15
         echo Proceeding with roll out...   
     
@@ -67,8 +64,7 @@ jobs:
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
     
     - name: 'WAIT FOR HEALTH CHECKS'
-      run: |
-        echo Waiting for health checks...        
+      run: |                
         sleep 15
         echo Proceeding with roll out...   
     
