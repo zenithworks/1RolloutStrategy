@@ -1,4 +1,4 @@
-name: Percentage based rollout
+name: Percentage based rollout- featureX
 
 on: [push]
 
