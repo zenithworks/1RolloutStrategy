@@ -5,7 +5,7 @@ on: [push]
 jobs:
   build:
     env:
-      featureFlagName: 'Microsoft.FeatureFlagDemo.GreenBackground'
+      FEATURE_FLAG: 'Microsoft.FeatureFlagDemo.GreenBackground'
     runs-on: ubuntu-latest    
     steps:
     - uses: actions/checkout@v1    
@@ -15,7 +15,7 @@ jobs:
       with:
         action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
-        feature-flag-name: $featureFlagName
+        feature-flag-name: $FEATURE_FLAG
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"       
     
     - name: 'TURN ON THE FEATURE FLAG'
