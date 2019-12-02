@@ -1,9 +1,8 @@
 name: Percentage based rollout
 
 on: [push]
-#env:
-#  FEATURE_FLAG: 'Microsoft.FeatureFlagDemo.GreenBackground'  
-jobs:   
+
+jobs:
   build:    
     runs-on: ubuntu-latest    
     steps:
@@ -14,7 +13,7 @@ jobs:
       with:
         action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
-        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'  
+        feature-flag-name: $(FEATURE_FLAG)
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"       
     
     - name: 'TURN ON THE FEATURE FLAG'
@@ -24,13 +23,12 @@ jobs:
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'       
     
-    - name: WAIT FOR QA FEEDBACK
-      run: |
-        echo Waiting for QA feedback...        
-        sleep 5
-        echo Proceeding with roll out...
+    - name: WAIT FOR QA FEEDBACK 
+      uses: jakejarvis/wait-action@master      
+      with:         
+        time: '5s'     
         
-    - name: 'ROLL OUT TO 10% USERS'
+    - name: 'ROLLOUT TO 10% USERS'
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
@@ -38,13 +36,12 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
 
-    - name: 'PERFORM HEALTH CHECKS'
-      run: |
-        echo Reaching out to health end points...        
-        sleep 4
-        echo Health checks complete - SUCCESS
+    - name: 'WAIT FOR HEALTH CHECKS'
+      uses: jakejarvis/wait-action@master      
+      with:         
+        time: '5s' 
         
-    - name: 'ROLL OUT TO SEGMENT  B USERS'
+    - name: 'ROLLOUT TO SEGMENT  B USERS'
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
@@ -52,11 +49,10 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
     
-    - name: 'PERFORM HEALTH CHECKS'
-      run: |
-        echo Reaching out to health end points...        
-        sleep 4
-        echo Health checks complete - SUCCESS
+    - name: 'WAIT FOR HEALTH CHECKS'
+      uses: jakejarvis/wait-action@master      
+      with:         
+        time: '5s' 
     
     - name: 'ROLLOUT TO 50% OF USERS'
       uses: zenithworks/rollout@master
@@ -66,11 +62,10 @@ jobs:
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
     
-    - name: 'PERFORM HEALTH CHECKS'
-      run: |
-        echo Reaching out to health end points...        
-        sleep 4
-        echo Health checks complete - SUCCESS
+    - name: 'WAIT FOR HEALTH CHECKS'
+      uses: jakejarvis/wait-action@master      
+      with:         
+        time: '5s' 
     
     - name: 'ROLLOUT TO 100% USERS'
       uses: zenithworks/rollout@master
