@@ -12,7 +12,7 @@ jobs:
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
-        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        project-id: '224835797'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'  
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"       
     
@@ -20,7 +20,7 @@ jobs:
       uses: zenithworks/rollout@master
       with:
         action-type: 'turn_on'
-        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        project-id: '224835797'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'       
     
 
@@ -34,7 +34,7 @@ jobs:
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
-        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        project-id: '224835797'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10'"
 
@@ -48,7 +48,7 @@ jobs:
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
-        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        project-id: '224835797'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '10' \n- target: 'row'\n  op: '='\n  value: 'B'"
     
@@ -62,7 +62,7 @@ jobs:
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
-        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        project-id: '224835797'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '50' \n- target: 'row'\n  op: '='\n  value: 'B'"
     
@@ -76,6 +76,6 @@ jobs:
       uses: zenithworks/rollout@master
       with:
         action-type: 'set_condition'
-        project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
+        project-id: '224835797'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A' \n- target: 'userId'\n  op: '%'\n  value: '100' \n- target: 'row'\n  op: '='\n  value: 'B'"
