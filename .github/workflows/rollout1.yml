@@ -1,11 +1,11 @@
 name: Percentage based rollout
 
 on: [push]
+env:
+  FEATURE_FLAG: 'Microsoft.FeatureFlagDemo.GreenBackground'  
+jobs:   
 
-jobs:
-  build:
-    env:
-      FEATURE_FLAG: 'Microsoft.FeatureFlagDemo.GreenBackground'
+  build:    
     runs-on: ubuntu-latest    
     steps:
     - uses: actions/checkout@v1    
