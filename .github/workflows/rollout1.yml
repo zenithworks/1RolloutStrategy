@@ -4,6 +4,8 @@ on: [push]
 
 jobs:
   build:
+    env:
+      featureFlagName: 'Microsoft.FeatureFlagDemo.GreenBackground'
     runs-on: ubuntu-latest    
     steps:
     - uses: actions/checkout@v1    
@@ -13,7 +15,7 @@ jobs:
       with:
         action-type: 'set_condition'
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
-        feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'
+        feature-flag-name: $featureFlagName
         feature-flag-condition: "- target: 'row'\n  op: '='\n  value: 'A'"       
     
     - name: 'TURN ON THE FEATURE FLAG'
@@ -23,11 +25,11 @@ jobs:
         project-id: '008af12b-94a6-4015-8633-4f50cc02b9c0'
         feature-flag-name: 'Microsoft.FeatureFlagDemo.GreenBackground'       
     
-    - name: Wait for QA validation
+    - name: WAIT FOR QA FEEDBACK
       run: |
-        echo Waiting for QA validation...        
-        sleep 4
-        echo Validation Successful... proceeding with roll out...
+        echo Waiting for QA feedback...        
+        sleep 5
+        echo Proceeding with roll out...
         
     - name: 'ROLL OUT TO 10% USERS'
       uses: zenithworks/rollout@master
