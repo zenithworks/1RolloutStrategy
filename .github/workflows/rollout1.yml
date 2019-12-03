@@ -1,4 +1,4 @@
-name: Percentage based rollout- featureZ
+name: Percentage based rollout- greenbackground
 
 on: [push]
 
